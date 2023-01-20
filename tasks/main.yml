@@ -1,0 +1,15 @@
+---
+- name: Get Consul node-id
+  command: >-
+    cat /opt/consul/node-id
+  register: consul_node_id
+
+- name: Generate /opt/consul/raft/peers.json
+  ansible.builtin.template:
+    src: templates/consul/peers.json.j2
+    dest: /opt/consul/raft/peers.json
+    owner: consul
+    group: consul
+    mode: 0644
+  notify:
+    - restart consul
