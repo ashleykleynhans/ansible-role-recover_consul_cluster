@@ -25,7 +25,7 @@ NONE
   gather_facts: yes
 
   roles:
-    ashleykleynhans.recover_consul_cluster
+    - ashleykleynhans.recover_consul_cluster
 ```
 
 ## License
