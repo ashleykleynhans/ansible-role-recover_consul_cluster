@@ -1,0 +1,15 @@
+[
+{% set count = namespace(value=0) %}
+{% for host in groups['consul'] %}
+{% set count.value = count.value + 1 %}
+  {
+    "id": "{{ hostvars[host].consul_node_id.stdout_lines[0] }}",
+    "address": "{{ hostvars[host]['ansible_default_ipv4']['address'] }}:8300",
+    "non_voter": false
+{% if count.value < (groups['consul'])|length %}
+  },
+{% else %}
+  }
+{% endif %}
+{% endfor %}
+]

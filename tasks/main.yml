@@ -6,7 +6,7 @@
 
 - name: Generate /opt/consul/raft/peers.json
   ansible.builtin.template:
-    src: consul/peers.json.j2
+    src: raft/peers.json.j2
     dest: /opt/consul/raft/peers.json
     owner: consul
     group: consul
